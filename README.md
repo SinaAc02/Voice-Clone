@@ -55,13 +55,3 @@ The tests cover audio trimming and level normalization without loading the speec
 ```powershell
 python -m unittest discover -s tests
 ```
-
-## Privacy and responsible use
-
-Use your own voice, or a voice whose owner has given permission. Do not use generated audio for impersonation, fraud, harassment or deception. Chatterbox adds its own neural watermark to generated speech.
-
-This repository does not contain reference recordings, generated MP3 files or model weights. Those paths are excluded in `.gitignore`.
-
-## License
-
-The application code is released under the MIT License. [Chatterbox](https://github.com/resemble-ai/chatterbox) is developed by Resemble AI and distributed separately under its own MIT license.
