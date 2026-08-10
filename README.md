@@ -47,11 +47,3 @@ On the first start, Chatterbox downloads into `models/huggingface/`. Later start
 5. `app.py` connects those parts to the Tkinter interface without blocking its main thread.
 
 Reference recordings are limited to 30 seconds. In practice, a clean 10-20 second sample with one speaker gives a better result than a noisy or heavily processed recording.
-
-## Tests
-
-The tests cover audio trimming and level normalization without loading the speech model:
-
-```powershell
-python -m unittest discover -s tests
-```
