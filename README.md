@@ -1,6 +1,6 @@
-# Voice Clone Studio
+# Voice Clone
 
-Voice Clone Studio is a local Windows desktop app for experimenting with zero-shot text-to-speech. It records a short voice sample, uses it as a reference for Chatterbox, and saves the generated speech as an MP3.
+Voice Clone is a local Windows desktop app for experimenting with zero-shot text-to-speech. It records a short voice sample, uses it as a reference for Chatterbox, and saves the generated speech as an MP3.
 
 I built this project to learn how a speech model fits into a complete desktop workflow: microphone input, basic signal cleanup, GPU inference and playback in one interface. The recordings, generated audio and downloaded model weights remain on the user's computer.
 
@@ -27,8 +27,8 @@ The project was developed and tested with an NVIDIA RTX 4070 Ti.
 ## Setup
 
 ```powershell
-git clone https://github.com/SinaAc02/Voice-Clone-Studio.git
-cd Voice-Clone-Studio
+git clone https://github.com/SinaAc02/Voice-Clone.git
+cd Voice-Clone
 py -3.12 -m venv .venv
 .\.venv\Scripts\Activate.ps1
 python -m pip install --upgrade pip

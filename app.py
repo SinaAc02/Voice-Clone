@@ -24,7 +24,7 @@ OUTPUT_DIRECTORY = ROOT / "outputs"
 class VoiceCloneApp:
     def __init__(self, root: tk.Tk) -> None:
         self.root = root
-        self.root.title("Voice Clone Studio")
+        self.root.title("Voice Clone")
 
         self.recorder = MicrophoneRecorder()
         self.player = AudioPlayer()
@@ -71,7 +71,7 @@ class VoiceCloneApp:
         header.pack(fill="x", pady=(0, 12))
         heading = ttk.Frame(header)
         heading.pack(side="left", fill="x", expand=True)
-        ttk.Label(heading, text="Voice Clone Studio", font=("Segoe UI", 21, "bold")).pack(anchor="w")
+        ttk.Label(heading, text="Voice Clone", font=("Segoe UI", 21, "bold")).pack(anchor="w")
         ttk.Label(
             heading,
             text="Create natural speech from a short voice reference.",
