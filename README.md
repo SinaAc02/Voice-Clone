@@ -12,7 +12,6 @@ I built this project to learn how a speech model fits into a complete desktop wo
 - Adjust expressiveness, guidance and temperature
 - Play both the reference and generated result inside the app
 - Export each result as a 192 kbps MP3
-- Load the model in a background thread so the window stays responsive
 
 ## Requirements
 
