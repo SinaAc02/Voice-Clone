@@ -1,0 +1,28 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.idea/
+.vscode/
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+*.spec
+
+# Private voice data and generated files
+data/
+outputs/
+*.wav
+*.mp3
+
+# Downloaded model files
+models/
+checkpoints/
+*.safetensors
+*.ckpt
+*.pth
+
+# Local OS files
+Thumbs.db
+.DS_Store
