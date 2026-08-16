@@ -2,7 +2,7 @@
 
 Voice Clone is a local Windows desktop app for experimenting with zero-shot text-to-speech. It records a short voice sample, uses it as a reference for Chatterbox, and saves the generated speech as an MP3.
 
-I built this project to learn how a speech model fits into a complete desktop workflow: microphone input, basic signal cleanup, GPU inference and playback in one interface. The recordings, generated audio and downloaded model weights remain on the user's computer.
+I built this project try out pre-trained speech models and see how good they are.
 
 ## Features
 
