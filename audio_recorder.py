@@ -11,7 +11,7 @@ import sounddevice as sd
 
 
 class MicrophoneRecorder:
-    """Capture mono microphone audio without blocking the user interface."""
+    """Capture mono microphone audio through a background stream."""
 
     def __init__(self, sample_rate: int = 48_000) -> None:
         self.sample_rate = sample_rate
@@ -84,7 +84,7 @@ class MicrophoneRecorder:
         return duration
 
     def cancel(self) -> None:
-        """Release the microphone without saving a partial recording."""
+        """Stop the microphone stream and discard the current recording."""
         stream = self._stream
         self._stream = None
         if stream is not None:

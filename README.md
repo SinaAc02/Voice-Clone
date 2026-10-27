@@ -1,48 +1,52 @@
 # Voice Clone
 
-Voice Clone is a local Windows desktop app for experimenting with zero-shot text-to-speech. It records a short voice sample, uses it as a reference for Chatterbox, and saves the generated speech as an MP3.
-
-I built this project try out pre-trained speech models and see how good they are.
+Voice Clone is a Windows desktop app that generates speech from text and a
+reference voice recording. It uses the pretrained Chatterbox model and saves
+results as MP3 files.
 
 ## Features
 
-- Record a reference directly from a selected microphone or import a WAV file
-- Trim quiet edges and normalize the recorded sample
-- Generate English speech with the Chatterbox 500M model
+- Record from a selected microphone or import a WAV file
+- Trim quiet edges and normalize recorded audio
+- Generate English speech with Chatterbox 500M
 - Adjust expressiveness, guidance and temperature
-- Play both the reference and generated result inside the app
-- Export each result as a 192 kbps MP3
-
-## Requirements
-
-- Windows 10 or 11
-- Python 3.12
-- NVIDIA GPU recommended (CPU inference is possible but slow)
-- Microphone
-- About 3 GB for the model, plus the PyTorch environment
-
-The project was developed and tested with an NVIDIA RTX 4070 Ti.
+- Play reference recordings and generated speech in the app
+- Export audio as 192 kbps MP3
 
 ## Setup
+
+The dependencies target Windows, Python 3.12 and CUDA 12.4. The engine selects
+CUDA when available and falls back to CPU inference. A microphone is needed
+for recording; existing WAV files can be imported instead.
 
 ```powershell
 git clone https://github.com/SinaAc02/Voice-Clone.git
 cd Voice-Clone
 py -3.12 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-python app.py
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe app.py
 ```
 
-On the first start, Chatterbox downloads into `models/huggingface/`. Later starts use the local copy. Loading still takes a little time because the model must be transferred into GPU memory.
+The first launch downloads model weights into `models/huggingface/`. Later
+launches reuse that cache and load the model into memory.
 
-## How it works
+## Using the app
 
-1. `audio_recorder.py` captures mono audio, removes long quiet edges and normalizes the level.
-2. `voice_engine.py` loads Chatterbox on CUDA when available and performs inference from the text and reference WAV.
-3. The generated waveform is encoded as MP3 with `lameenc`.
-4. `audio_player.py` sends reference or generated samples to the Windows audio output.
-5. `app.py` connects those parts to the Tkinter interface without blocking its main thread.
+1. Select a microphone and record a reference, or import a WAV file.
+2. Play the reference to check its level and clarity.
+3. Enter up to 1,000 characters of text and adjust the voice settings.
+4. Choose **Generate MP3**, then play the result.
 
-Reference recordings are limited to 30 seconds. In practice, a clean 10-20 second sample with one speaker gives a better result than a noisy or heavily processed recording.
+The recorder keeps up to 30 seconds of audio and trims quiet edges. A clear
+10-20 second sample with one speaker is a useful starting point. Voice quality
+varies with the recording and generated text.
+
+The current reference is saved to `data/reference.wav`; generated MP3 files go
+to `outputs/`. These folders and the model cache are ignored by Git.
+
+## Project structure
+
+- `app.py`: Tkinter interface and background workers
+- `audio_recorder.py`: microphone capture and recording cleanup
+- `voice_engine.py`: Chatterbox loading, generation and MP3 encoding
+- `audio_player.py`: playback through the default audio output

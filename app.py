@@ -74,7 +74,7 @@ class VoiceCloneApp:
         ttk.Label(heading, text="Voice Clone", font=("Segoe UI", 21, "bold")).pack(anchor="w")
         ttk.Label(
             heading,
-            text="Create natural speech from a short voice reference.",
+            text="Generate speech from a short voice reference.",
             bootstyle="secondary",
         ).pack(anchor="w", pady=(2, 0))
         self.model_badge = ttk.Label(
@@ -302,7 +302,7 @@ class VoiceCloneApp:
     def _start_model_load(self) -> None:
         self.generate_button.configure(state="disabled")
         self.progress.start(10)
-        self.status.set("Loading the local Chatterbox model on the GPU...")
+        self.status.set("Loading the Chatterbox model...")
         threading.Thread(target=self._model_load_worker, daemon=True).start()
 
     def _model_load_worker(self) -> None:

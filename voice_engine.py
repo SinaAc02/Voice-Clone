@@ -49,7 +49,7 @@ class VoiceEngine:
             if self._model is not None:
                 return self.device or "unknown"
 
-            # Model files stay next to the project and are never committed.
+            # Model downloads use the project's ignored cache directory.
             MODEL_CACHE.mkdir(parents=True, exist_ok=True)
             os.environ["HF_HOME"] = str(MODEL_CACHE)
 
@@ -95,7 +95,7 @@ class VoiceEngine:
         if not text:
             raise ValueError("Enter some text to generate.")
         if len(text) > 1_000:
-            raise ValueError("Keep the first version below 1,000 characters per generation.")
+            raise ValueError("Enter up to 1,000 characters per generation.")
         if not reference_audio.exists():
             raise FileNotFoundError("Record or import a reference voice first.")
         if not 0.25 <= exaggeration <= 1.5:
